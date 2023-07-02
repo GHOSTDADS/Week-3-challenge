@@ -19,12 +19,12 @@ function writePassword() {
     //prompts user for input and makes the input a number.
     length = parseInt(prompt("Enter the length of your password between 8-128 characters."));
 
-    //if they click cancel or enter not a number, and end function. then check if the number is between 8-128, if not restart function.
+    //if they click cancel or enter not a number, and end function. then check if the number is between 8-128, if not return.
     if (!length) {
       return;
     } else if (length > 128 || length < 8){
       window.alert("Please enter a number between 8 - 128.");
-      generatePassword();
+      return;
     }
     //make a temp array to pull charcters from for the password.
     var tempArray = [];

@@ -14,15 +14,14 @@ Created the JS for a password generator, witht he ability to choose a length of 
 ## Installation
 
 run the site either on you own hosting or on the link here:
-
+    https://ghostdads.github.io/Week-3-challenge/
 
 ## Usage
 
 click on the generate passwrod button, then answer the prompts as they appear.
 After you can copy the password from the box with the backing 'your secure password'.
 
-
-[image of the website](./assets/images/screenshot.png)
+<img src="./assets/images/screenshot.png" alt="picture of the webpage" />
 
 
 ## Credits
