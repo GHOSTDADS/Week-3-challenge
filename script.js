@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// 26 abc array
+// 26 abc array lower and uppercase
 // 30 symbols arrys
 // 10 mumbers arays
 var letterLower=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -16,8 +16,9 @@ function writePassword() {
   function generatePassword(){
     var length = 0;
 
-    //makes the input a number.
+    //prompts user for input and makes the input a number.
     length = parseInt(prompt("Enter the length of your password between 8-128 characters."));
+
     //if they click cancel or enter not a number, and end function. then check if the number is between 8-128, if not restart function.
     if (!length) {
       return;
@@ -31,62 +32,53 @@ function writePassword() {
     //make an array for the final password to sit in/built in.
     var password = [];
 
-    //ask if they wnat different charcter sets, and adds the arrays together.'
-    // Also if the sleect yes it adds an element of that type to the password array to guaruntee that type is included in the final password.
+    //ask if they wnat different charcter sets, and adds the arrays together inside the tempArray.
+    // Also if the user selects yes it adds an element of that type to the password array to guaruntee that type is included in the final password.
     upperCaseCheck = confirm("Do you want uppercase?");
     if (upperCaseCheck == true){
       tempArray.push(...letterUpper);
-      console.log(tempArray);
       password.splice(0, 0, (letterUpper[(Math.floor(Math.random() * letterUpper.length))]));
-      console.log(letterUpper);
-      console.log(password);
     }
+
     lowerCaseCheck = confirm("Do you want lowercase?");
     if (lowerCaseCheck == true){
       tempArray.push(...letterLower);
-      console.log(tempArray);
       password.splice(0, 0, (letterLower[(Math.floor(Math.random() * letterLower.length))]));
-      console.log(letterLower);
-      console.log(password);
     }
+
     symbolCheck = confirm("do you want symbols?");
     if (symbolCheck == true){
       tempArray.push(...symbols);
-      console.log(tempArray);
       password.splice(0, 0, (symbols[(Math.floor(Math.random() * symbols.length))]));
-      console.log(symbols);
-      console.log(password);
     }
+
     numbersCheck = confirm("do you want numbers?");
     if (numbersCheck == true){
-      tempArray.push(...letterLower);
-      console.log(tempArray);
+      tempArray.push(...num);
       password.splice(0, 0, (num[(Math.floor(Math.random() * num.length))]));
-      console.log(letterLower);
-      console.log(password);
     }
-    //check they said yes to atleast one option
+
+    //check they said yes to atleast one option, if all were no, restart the password generation and tell them they must choose atleast one option.
     if (upperCaseCheck == false && lowerCaseCheck == false && symbolCheck == false && numbersCheck == false){
       alert("You have to choose ATLEAST one option, please start again");
       generatePassword();
     };
     
-    console.log(password.length);
-    console.log(length);
-    console.log(length - password.length);
+    //sets the length to be the remaining space in the password array, as each YES option adds one element to the password array.
     length = (length - password.length);
-    console.log(length);
+
+    //splices in a random character from the chosen character sets into the password array at position zero, up to the amount specified by the user.
     for (var i = 0; i < (length); i++) {
       password.splice(0, 0, (tempArray[(Math.floor(Math.random() * tempArray.length))]));
     };
-    
+
+    //uses the join() method to turn the array into a string with no seperator. (eg no comma between each character)
     password = (password.join(''));
-    console.log(password)
+
+    // returns the result so its usable outside the function.
     return password;
-
-
-
   };
+
   var password = generatePassword();
 
   var passwordText = document.querySelector("#password");
@@ -98,16 +90,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-/*  needs a prompt for passwrod length between 8-128 chacters
-    prompts for loer case use toupper/tolowercase fuction
-    prompt for uppercase
-    needs a prompt for including special characters
-    needs a prompt for including numbers
-    */
-
-
-
-    // Get references to the #generate element
+// Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 
